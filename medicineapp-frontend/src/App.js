@@ -1,17 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import About from './pages/About'
 import Login from './pages/Login'
+import Signup from './pages/Signup'
 import Profile from './pages/Profile'
 import Testimonials from './pages/Testimonials'
 import Home from './pages/Home'
 import Header from './components/Header'
 
 const App = () => {
+  const [user, setUser] = useState('')
+
   return (
     <div>
       <Router>
-        <Header />
+        <Header user={user} setUser={setUser} />
         <Switch>
           <Route path='/testimonials'>
             <Testimonials />
@@ -22,8 +25,11 @@ const App = () => {
           <Route path='/login'>
             <Login />
           </Route>
-          <Route path='/profile'>
-            <Profile />
+          <Route path='/signup'>
+            <Signup />
+          </Route>
+          <Route path='/profile/:id'>
+            <Profile user={user} setUser={setUser} />
           </Route>
           <Route path='/'>
             <Home />
