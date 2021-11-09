@@ -1,5 +1,7 @@
-const router =require('express').Router()
-const collectorSubmissionController=require('../controllers/collectorSubmissionController')
-router.post('/',collectorSubmissionController.postCollectorData)
+const router = require('express').Router()
+const collectorSubmissionController = require('../controllers/collectorSubmissionController')
 
-module.exports=router
+router.get('/:userId', collectorSubmissionController.getCollectorData)
+router.post('/', collectorSubmissionController.postCollectorData)
+
+module.exports = router

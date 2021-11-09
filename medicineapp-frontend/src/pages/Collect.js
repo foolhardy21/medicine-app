@@ -36,13 +36,16 @@ function CollectorForm(){
         }
       }
 
-      const handleFormSubmit = (e) => {
+      const handleFormSubmit = async (e) => {
         e.preventDefault();
         console.log("InputData Submitted : ", inputData);
-        const dataObj = inputData
-        const response = postCollectorData(dataObj)
+        const dataObj = {
+            inputData,
+            user: JSON.parse(window.localStorage.getItem('userId'))
+        }
+        const response = await postCollectorData(dataObj)
         alert('Medicine data submitted.')
-        history.push('/login')
+        // history.push('/login')
       };
 
     return (
