@@ -7,6 +7,7 @@ import Profile from './pages/Profile'
 import Testimonials from './pages/Testimonials'
 import Home from './pages/Home'
 import Header from './components/Header'
+import Collector from './components/collector'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -35,6 +36,7 @@ const App = () => {
             <Home />
           </Route>
         </Switch>
+        <Collector></Collector>
       </Router>
     </div>
   );
