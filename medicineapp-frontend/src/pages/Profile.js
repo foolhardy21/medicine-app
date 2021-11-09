@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { getCollectionsRequests } from '../services/collectorService'
 import {getDonationsRequests} from '../services/donorService'
 import { getUserDetails } from '../services/users'
+import Collections from '../components/Collections'
+import Donations from '../components/Donations'
 
 function Profile(props) {
-  const [allRequests, setAllRequests] = useState([])
+  const [allCollections, setAllCollections] = useState([])
   const [allDonations, setAllDonations] = useState([])
-  console.log(allDonations)
+  
   useEffect(() => {
     async function getUser() {
       const user = await getUserDetails(JSON.parse(window.localStorage.getItem('userId')))
@@ -14,7 +16,7 @@ function Profile(props) {
     }
     async function getCollections() {
       const response = await getCollectionsRequests(JSON.parse(window.localStorage.getItem('userId')))
-      setAllRequests(response)
+      setAllCollections(response)
     }
     async function getDonations() {
       const response = await getDonationsRequests(JSON.parse(window.localStorage.getItem('userId')))
@@ -34,51 +36,8 @@ function Profile(props) {
       <p>gender - {props.user.gender}</p>
       <p>age - {props.user.age}</p>
       <p>address - {props.user.address}</p>
-      <h2>Collections</h2>
-      {
-        allRequests.map(request => {
-          return (
-            <ul key={request._id}>
-              <li>{request.status}</li>
-              <li>{request.date}</li>
-              {
-                request.request.map(medicine => {
-                  return (
-                    <ul key={medicine._id}>
-                      <li>{medicine.medicineName}</li>
-                      <li>{medicine.weight}</li>
-                      <li>{medicine.companyName}</li>
-                      <li>{medicine.quantity}</li>
-                    </ul>
-                  )
-                })
-              }
-            </ul>
-          )
-        })
-      }
-      <h2>Donations</h2>
-      {
-        allDonations.map(donation => {
-          return (
-            <ul key={donation._id}>
-              <li>{donation.submissionDate}</li>
-              {
-                donation.submission.map(medicine => {
-                  return (
-                    <ul key={medicine._id}>
-                      <li>{medicine.medicineName}</li>
-                      <li>{medicine.weight}</li>
-                      <li>{medicine.companyName}</li>
-                      <li>{medicine.quantity}</li>
-                    </ul>
-                  )
-                })
-              }
-            </ul>
-          )
-        })
-      }
+      <Collections allCollections={allCollections} />
+      <Donations allDonations={allDonations}/>
     </div>
   );
 }

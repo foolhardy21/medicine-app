@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header(props) {
-    const history = useHistory()
 
     function handleLogOut() {
         props.setUser('')
         window.localStorage.removeItem('userId')
-        history.push('/home')
     }
   return (
     <>
@@ -60,8 +58,8 @@ function Header(props) {
                 }
                 {
                     props.user && 
-                    <li className="nav-link" onClick={handleLogOut}>
-                        LogOut
+                    <li className="nav-item" onClick={handleLogOut}>
+                        <Link className="nav-link" to='/'>LogOut</Link>
                     </li>
                 }
                 {
