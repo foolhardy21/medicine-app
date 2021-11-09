@@ -2,9 +2,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const loginRouter = require('./routes/loginRouter')
-const collectorRouter=require('./routes/collectorRouter')
 const config = require('./config')
 const app = express()
+const donorRouter = require('./routes/donorSubmissionDataRouter')
 
 mongoose.connect(config.MONGODB
 , {useNewUrlParser: true, useUnifiedTopology: true}).then(response => {
@@ -16,6 +16,6 @@ mongoose.connect(config.MONGODB
 app.use(cors())
 app.use(express.json())
 app.use('/login', loginRouter)
-app.use('/collector',collectorRouter)
+app.use('/donor',donorRouter)
 
 module.exports = app
