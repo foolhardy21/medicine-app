@@ -60,9 +60,15 @@ function Header(props) {
                 }
                 {
                     props.user && 
-                    <button className="nav-item" onClick={handleLogOut}>
+                    <li className="nav-link" onClick={handleLogOut}>
                         LogOut
-                    </button>
+                    </li>
+                }
+                {
+                    !props.user && 
+                    <li className="nav-item">
+                        <Link className='nav-link' to='/login-as-admin'>Login as admin</Link>
+                    </li>
                 }
             </ul>
         </div>

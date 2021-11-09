@@ -24,3 +24,4 @@ export const getUserDetails = async (userId) => {
         })
     return response.data
 }
+

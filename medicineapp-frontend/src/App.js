@@ -8,6 +8,7 @@ import Testimonials from './pages/Testimonials'
 import Home from './pages/Home'
 import Header from './components/Header'
 import Collector from './pages/Collect'
+import Donate from './pages/Donate'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -21,7 +22,7 @@ const App = () => {
             <Testimonials />
           </Route>
           <Route path='/donate'>
-
+            <Donate />
           </Route>
           <Route path='/collect'>
             <Collector />
@@ -37,6 +38,9 @@ const App = () => {
           </Route>
           <Route path='/profile'>
             <Profile user={user} setUser={setUser} />
+          </Route>
+          <Route path = '/login-as-admin'>
+            
           </Route>
           <Route path='/'>
             <Home />
