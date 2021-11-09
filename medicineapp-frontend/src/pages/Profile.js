@@ -3,7 +3,7 @@ import { getCollectionsRequests } from '../services/collectorService'
 import { getUserDetails } from '../services/users'
 
 function Profile(props) {
-  const [collections, setCollections] = useState({})
+  const [allRequests, setAllRequests] = useState([])
 
   useEffect(() => {
     async function getUser() {
@@ -12,19 +12,13 @@ function Profile(props) {
     }
     async function getCollections() {
       const response = await getCollectionsRequests(JSON.parse(window.localStorage.getItem('userId')))
-      const collectionsReq = {
-        active: response.active,
-        date: response.date,
-        requests: response.request,
-        status: response.status,
-      } 
-      setCollections(collectionsReq)
+      setAllRequests(response)
     }
     getUser()
     getCollections()
     
   },[])
-
+  
   return (
     <div>
       <h2>About Me</h2>
@@ -34,19 +28,27 @@ function Profile(props) {
       <p>age - {props.user.age}</p>
       <p>address - {props.user.address}</p>
       <h2>Collections</h2>
-      <p>{collections.date}</p>
-      <p>{collections.status}</p>
       {
-        collections.requests && 
-        collections.requests.map(req => {
+        allRequests.map(request => {
+          console.log(request)
           return (
-            <div key={req._id}>
-              <p>{req.medicineName}</p>
-              <p>{req.weight}</p>
-              <p>{req.companyName}</p>
-              <p>{req.quantity}</p>
-            </div>
-          ) 
+            <ul key={request._id}>
+              <li>{request.status}</li>
+              <li>{request.date}</li>
+              {
+                request.request.map(medicine => {
+                  return (
+                    <ul key={medicine._id}>
+                      <li>{medicine.medicineName}</li>
+                      <li>{medicine.weight}</li>
+                      <li>{medicine.companyName}</li>
+                      <li>{medicine.quantity}</li>
+                    </ul>
+                  )
+                })
+              }
+            </ul>
+          )
         })
       }
       <h2>Donations</h2>

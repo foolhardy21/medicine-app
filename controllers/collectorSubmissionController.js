@@ -28,7 +28,6 @@ exports.postCollectorData = async function(req, res) {
 exports.getCollectorData = async function(req, res) {
 
     const userId = req.params.userId
-    const response = await CollectorData.findOne({user: userId})
+    const response = await CollectorData.find({user: userId})
     res.send(response)
-    // res.end()
 }
