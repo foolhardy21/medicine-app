@@ -6,6 +6,7 @@ function Header(props) {
 
     function handleLogOut() {
         props.setUser('')
+        window.localStorage.removeItem('userId')
         history.push('/home')
     }
   return (
@@ -44,6 +45,18 @@ function Header(props) {
                 <li className="nav-item">
                     <Link className="nav-link" to="/signup">Signup</Link>
                 </li>
+                }
+                {
+                    props.user && 
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/donate">Donate</Link>
+                    </li>
+                }
+                {
+                    props.user && 
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/collect">Collect</Link>
+                    </li>
                 }
                 {
                     props.user && 

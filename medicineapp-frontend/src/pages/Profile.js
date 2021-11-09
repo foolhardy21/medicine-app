@@ -3,14 +3,19 @@ import {useParams} from 'react-router-dom'
 import { getUserDetails } from '../services/users'
 
 function Profile(props) {
-  const {id} = useParams()
+  // const {id} = useParams()
 
   useEffect(() => {
-    async function getProfileData() {
-      const user = await getUserDetails(id)
+    // async function getProfileData() {
+    //   const user = await getUserDetails(id)
+    //   props.setUser(user)
+    // }
+    // getProfileData()
+    async function getUser() {
+      const user = await getUserDetails(JSON.parse(window.localStorage.getItem('userId')))
       props.setUser(user)
     }
-    getProfileData()
+    getUser()
   },[])
 
   return (

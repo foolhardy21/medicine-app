@@ -7,7 +7,7 @@ import Profile from './pages/Profile'
 import Testimonials from './pages/Testimonials'
 import Home from './pages/Home'
 import Header from './components/Header'
-import Collector from './components/collector'
+import Collector from './pages/Collect'
 
 const App = () => {
   const [user, setUser] = useState('')
@@ -20,6 +20,12 @@ const App = () => {
           <Route path='/testimonials'>
             <Testimonials />
           </Route>
+          <Route path='/donate'>
+
+          </Route>
+          <Route path='/collect'>
+            <Collector />
+          </Route>
           <Route path='/about'>
             <About />
           </Route>
@@ -29,14 +35,13 @@ const App = () => {
           <Route path='/signup'>
             <Signup />
           </Route>
-          <Route path='/profile/:id'>
+          <Route path='/profile'>
             <Profile user={user} setUser={setUser} />
           </Route>
           <Route path='/'>
             <Home />
           </Route>
         </Switch>
-        <Collector></Collector>
       </Router>
     </div>
   );

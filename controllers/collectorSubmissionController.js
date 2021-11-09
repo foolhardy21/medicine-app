@@ -1,6 +1,7 @@
 const ConllectorData=require("../models/Collector")
+
 exports.postCollectorData=function(req,res){
-    console.log('in controller',req.body)
+    
     const colldata=req.body
     const status="In Consideration"
     const active=true

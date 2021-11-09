@@ -12,7 +12,8 @@ function Login() {
     if(response.includes('invalid')) {
       alert(response)
     } else {
-      history.push(`/profile/${response}`)
+      history.push(`/profile`)
+      window.localStorage.setItem('userId',JSON.stringify(response))
     }
 
   } 
