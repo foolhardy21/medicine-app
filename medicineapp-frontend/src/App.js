@@ -7,7 +7,9 @@ import Profile from './pages/Profile'
 import Testimonials from './pages/Testimonials'
 import Home from './pages/Home'
 import Header from './components/Header'
-
+import AdminLogin from './pages/admin_login'
+import AdminPage from './pages/admin_page'
+import DetailsPage from './pages/details_page'
 const App = () => {
   const [user, setUser] = useState('')
 
@@ -30,6 +32,15 @@ const App = () => {
           </Route>
           <Route path='/profile/:id'>
             <Profile user={user} setUser={setUser} />
+          </Route>
+          <Route path = '/login-as-admin'>
+            <AdminLogin/>
+          </Route>
+          <Route path = '/admin-page/:id'>
+            <AdminPage/>
+          </Route>
+          <Route path = '/requestDetails/:adminid/:requestid'>
+            <DetailsPage/>
           </Route>
           <Route path='/'>
             <Home />

@@ -22,7 +22,11 @@ const userSchema = mongoose.Schema({
     },
     address: {
         type: String
-    }
+    },
+    collection_requests : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Collector"
+    }]
 })
 
 const User = mongoose.model('User', userSchema)
