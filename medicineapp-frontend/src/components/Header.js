@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header(props) {
-    const history = useHistory()
 
     function handleLogOut() {
         props.setUser('')
         window.localStorage.removeItem('userId')
-        history.push('/home')
     }
   return (
     <>
@@ -60,9 +58,15 @@ function Header(props) {
                 }
                 {
                     props.user && 
-                    <button className="nav-item" onClick={handleLogOut}>
-                        LogOut
-                    </button>
+                    <li className="nav-item" onClick={handleLogOut}>
+                        <Link className="nav-link" to='/'>LogOut</Link>
+                    </li>
+                }
+                {
+                    !props.user && 
+                    <li className="nav-item">
+                        <Link className='nav-link' to='/login-as-admin'>Login as admin</Link>
+                    </li>
                 }
             </ul>
         </div>

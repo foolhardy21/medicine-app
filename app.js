@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const loginRouter = require('./routes/loginRouter')
 const collectorRouter=require('./routes/collectorRouter')
+const donorRouter = require('./routes/donorSubmissionDataRouter')
 const config = require('./config')
 const app = express()
 
@@ -17,5 +18,6 @@ app.use(cors())
 app.use(express.json())
 app.use('/login', loginRouter)
 app.use('/collector',collectorRouter)
+app.use('/donor', donorRouter)
 
 module.exports = app

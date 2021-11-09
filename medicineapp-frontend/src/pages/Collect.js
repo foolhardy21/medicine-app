@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {postCollectorData} from "../services/collectorService"
-import { useHistory } from "react-router-dom"
 
 function CollectorForm(){
-    const history = useHistory()
-
+    
     const medicineList = ["Acetaminophen","Paracetamol","Ibuprofen","chlorpheniramine"]
     const medWeightList = [250,500,650,1000]
     const companyList = ["Cipla","Sun Farma","Cadila","Divi"]
@@ -36,13 +34,14 @@ function CollectorForm(){
         }
       }
 
-      const handleFormSubmit = (e) => {
+      const handleFormSubmit = async (e) => {
         e.preventDefault();
-        console.log("InputData Submitted : ", inputData);
-        const dataObj = inputData
-        const response = postCollectorData(dataObj)
+        const dataObj = {
+            inputData,
+            user: JSON.parse(window.localStorage.getItem('userId'))
+        }
+        const response = await postCollectorData(dataObj)
         alert('Medicine data submitted.')
-        history.push('/login')
       };
 
     return (
