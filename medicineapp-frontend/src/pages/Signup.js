@@ -30,22 +30,48 @@ const SignUp = () => {
         history.push('/login')
     }
     return (
-        <form onSubmit={handleSignUpSubmit}>
-            <label htmlFor='username_input'>username</label>
-            <input name='username_input' type='text'/><br/>
-            <label htmlFor='password_input'>password</label>
-            <input name='password_input' type='password' /><br/>
-            <label htmlFor='age_input'>age</label>
-            <input name='age_input' type='number'/><br/>
-            <label htmlFor='gender_input'>gender</label>
-            <input type='text' name='gender_input'/><br/>
-            <label htmlFor='contact_input'>contact</label>
-            <input name='contact_input' type='number' /><br/>
-            <label htmlFor='name_input'>name</label>
-            <input name='name_input' type='text' /><br/>
-            <label htmlFor='address_input'>address</label>
-            <input name='address_input' type='text' /><br />
-            <input type='submit' value='signup'/>
+        <form onSubmit={handleSignUpSubmit} className="bg-info rounded">
+        <section className="vh-100">
+          <div className="container py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div className="card shadow-2-strong">
+                  <div className="card-body p-3 text-center bg-light">
+                    <h3 class="mb-4 ">Sign Up</h3>
+                    <div className="form-floating mb-4">
+                        <label for="username" className="col-md-4 col-form-label text-md-right">Username : </label>
+                        <input id="username" type='text' placeholder="Enter username"/>
+                    
+                        <label for="password" className="col-md-4 col-form-label text-md-right">Password : </label>
+                        <input name='password_input' id="password" type='password' placeholder="Enter password"/>
+                    
+                        <label for="age" className="col-md-4 col-form-label text-md-right">Age : </label>
+                        <input name='age_input' id="age" type='number' placeholder="Enter age"/>
+                    
+                        <label for="gender" className="col-md-4 col-form-label text-md-right">Gender : </label>
+                        <input type='text' list="gender" name='gender_input' placeholder="Gender"/>
+                        <datalist id="gender">
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </datalist>
+                    
+                        <label for="contact" className="col-md-4 col-form-label text-md-right">Contact : </label>
+                        <input name='contact_input' id="contact" type='number' minLength="9" maxLength="9" placeholder="Enter Contact"/>
+                    
+                        <label for="name" className="col-md-4 col-form-label text-md-right">Enter Name : </label>
+                        <input name='name_input' id="name" type='text' placeholder="Enter Name" />
+                    
+                        <label for="address" className="col-md-4 col-form-label text-md-right">Address : </label>
+                        <input name='address_input' id="address" type='text' placeholder="Enter Address"/>
+                    </div>
+                    <input type='submit' value='signup' className="btn btn-primary btn-lg btn-block"/>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         </form>
     )
 }
