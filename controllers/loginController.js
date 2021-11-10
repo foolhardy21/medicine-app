@@ -1,6 +1,6 @@
 const User = require('../models/User')
 const Admin = require('../models/Admin')
-const Collection = require('../models/Collection_model')
+const Collection = require('../models/Collector')
 const bcrypt = require('bcrypt')
 
 exports.postUser = async function (req, res) {

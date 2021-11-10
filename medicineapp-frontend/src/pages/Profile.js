@@ -29,14 +29,19 @@ function Profile(props) {
   },[])
   
   return (
-    <div>
+    <div className = "container">
       <h2>About Me</h2>
-      <p>username - {props.user.username}</p>
-      <p>name - {props.user.name}</p>
-      <p>gender - {props.user.gender}</p>
-      <p>age - {props.user.age}</p>
-      <p>address - {props.user.address}</p>
+      <br/>
+      <div className = "border border-dark p-4 bg-light">
+      <p><b>Username</b> : {props.user.username}</p>
+      <p><b>Name</b> : {props.user.name}</p>
+      <p><b>Bender</b> : {props.user.gender}</p>
+      <p><b>Age</b> : {props.user.age}</p>
+      <p><b>Address</b> : {props.user.address}</p>
+      </div>
+      <hr/>
       <Collections allCollections={allCollections} />
+      <hr/>
       <Donations allDonations={allDonations}/>
     </div>
   );

@@ -3,31 +3,41 @@ import React from "react"
 const Collections = ({allCollections}) => {
     
     return (
-        <>
-            <h4>Collections</h4>
-            {
-                allCollections.map(request => {
-                return (
-                    <ul key={request._id}>
-                    <li>{request.status}</li>
-                    <li>{request.date}</li>
-                    {
-                        request.request.map(medicine => {
-                        return (
-                            <ul key={medicine._id}>
-                            <li>{medicine.medicineName}</li>
-                            <li>{medicine.weight}</li>
-                            <li>{medicine.companyName}</li>
-                            <li>{medicine.quantity}</li>
-                            </ul>
-                        )
-                        })
-                    }
-                    </ul>
-                )
-                })
-            }
-        </>
+        
+        <div >
+        <h4>Collection</h4>
+        <table class="table table-bordered border-dark">
+                <thead class="table-primary">
+                    <tr>
+                        
+                        <th scope = 'col'> SrNo. </th>
+                        <th scope = 'col'> Date </th>
+                        <th scope = 'col'> Time </th>
+                        <th scope = 'col'> Status </th>
+
+                        
+                    </tr>
+            </thead>
+            <tbody className = "bg-light">
+                {allCollections.map((request,index) => {
+                        return(
+                            <tr key = {request._id}>
+                                <td>{index+1}</td>
+                                <td>{request.date.substring(0,10).split('-').reverse().join('-')}</td>
+                                <td>{request.date.substring(11,19)}</td>
+                                <td>{request.status}</td> 
+
+                            </tr>
+                        
+                        
+                        )}
+                    )}
+                    
+                 </tbody>
+
+            </table>
+            </div>
+
     )
 }
 

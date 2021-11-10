@@ -9,7 +9,7 @@ const SignUp = () => {
         e.preventDefault()
 
         const userObj = {
-            username: e.target.username_input.value,
+            username: e.target.username.value,
             password: e.target.password_input.value,
             age: e.target.age_input.value,
             gender: e.target.gender_input.value,
@@ -18,7 +18,7 @@ const SignUp = () => {
             address: e.target.address_input.value
         }
         const response = await postUser(userObj)
-        e.target.username_input.value = ''
+        e.target.username.value = ''
         e.target.password_input.value = ''
         e.target.age_input.value = ''
         e.target.gender_input.value = ''
@@ -30,8 +30,10 @@ const SignUp = () => {
         history.push('/login')
     }
     return (
-        <form onSubmit={handleSignUpSubmit} className="bg-info rounded">
-        <section className="vh-100">
+    
+      
+      <form onSubmit={handleSignUpSubmit} className="bg-info rounded">
+        <section className="vh-100 ">
           <div className="container py-5 h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -40,7 +42,7 @@ const SignUp = () => {
                     <h3 className="mb-4 ">Sign Up</h3>
                     <div className="form-floating mb-4">
                         <label htmlFor="username" className="col-md-4 col-form-label text-md-right">Username : </label>
-                        <input id="username" type='text' placeholder="Enter username"/>
+                        <input id="username" type='text' placeholder="Enter username" autoComplete = 'none'/>
 
                         <label htmlFor="password" className="col-md-4 col-form-label text-md-right">Password : </label>
                         <input name='password_input' id="password" type='password' placeholder="Enter password"/>
@@ -60,10 +62,10 @@ const SignUp = () => {
                         <input name='contact_input' id="contact" type='number' minLength="9" maxLength="9" placeholder="Enter Contact"/>
 
                         <label htmlFor="name" className="col-md-4 col-form-label text-md-right">Enter Name : </label>
-                        <input name='name_input' id="name" type='text' placeholder="Enter Name" />
+                        <input name='name_input' id="name" type='text' placeholder="Enter Name" autoComplete = 'none' />
 
                         <label htmlFor="address" className="col-md-4 col-form-label text-md-right">Address : </label>
-                        <input name='address_input' id="address" type='text' placeholder="Enter Address"/>
+                        <input name='address_input' id="address" type='text' placeholder="Enter Address" autoComplete = 'none'/>
                     </div>
                     <input type='submit' value='signup' className="btn btn-primary btn-lg btn-block"/>
                     </div>
@@ -73,6 +75,7 @@ const SignUp = () => {
           </div>
         </section>
         </form>
+   
     )
 }
 
