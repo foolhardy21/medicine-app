@@ -35,7 +35,7 @@ function Profile(props) {
       <div className = "border border-dark p-4 bg-light">
       <p><b>Username</b> : {props.user.username}</p>
       <p><b>Name</b> : {props.user.name}</p>
-      <p><b>Bender</b> : {props.user.gender}</p>
+      <p><b>Gender</b> : {props.user.gender}</p>
       <p><b>Age</b> : {props.user.age}</p>
       <p><b>Address</b> : {props.user.address}</p>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useHistory } from "react-router"
 import { postUser } from "../services/users"
+import '../navStyle.css'
 
 const SignUp = () => {
     const history = useHistory()
@@ -147,8 +148,8 @@ const SignUp = () => {
                         <label htmlFor="age" className="col-md-4 col-form-label text-md-right">Age<span style={{color: 'red'}}>*</span> : </label>
                         <input type="text" maxLength="2" name='age_input' id="age" placeholder="Enter age"/>
 
-                        <label htmlFor="gender" className="col-md-4 col-form-label text-md-right">Gender<span style={{color: 'red'}}>*</span> : </label>
-                        <select name='gender_input'>
+                        <label htmlFor="gender" className="col-md-4 col-form-label text-md-right element">Gender<span style={{color: 'red'}}>*</span> : </label>
+                        <select className='select_input' name='gender_input'>
                             <option value='Male'>Male</option>
                             <option value='Female'>Female</option>
                             <option value='Other'>Other</option>
