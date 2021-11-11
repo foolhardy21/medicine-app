@@ -5,20 +5,43 @@ function Donate(){
 
   const medicineList = ["Acetaminophen","Paracetamol","Ibuprofen","chlorpheniramine"]
   const medWeightList = [250,500,650,1000]
-  const companyList = ["Cipla","Sun Farma","Cadila","Divi"]
+  const companyList = ["Cipla","Sun Pharma","Cadila","Divi"]
+  const [isDisabled,setIsDisabled] =useState(true)
 
   const [inputData, setInputData] = useState([
         { medicineName: '',weight:'',companyName:'', quantity: '' },
   ]);
 
+  function disableSubmitButton(len){
+    // let len = inputData.length
+    let curLen = 0
+    for(let input of inputData){
+        if(input.companyName && input.medicineName && input.weight && input.quantity){
+            curLen++
+        }
+    }
+    if(curLen===len){
+        setIsDisabled(false)
+    }
+    else{
+        setIsDisabled(true)
+    }
+  }
+
   const handleAddData = () => {
+        setIsDisabled(true)
         setInputData([...inputData, { medicineName: '',weight:'',companyName:'', quantity: '' }])
   }
 
   const handleRemoveData = id => {
         const values  = [...inputData];
-        values.splice(values.findIndex(value => value.id === id), 1);
+        // values.splice(values.findIndex(value => value.id === id), 1);
+        values.splice(id,1);
         setInputData(values);
+        // let len = inputData.length
+        let len = values.length
+        disableSubmitButton(len)
+        
   }
 
   const handleChangeInput = (i,e) => {
@@ -34,6 +57,11 @@ function Donate(){
             newInputData[i][e.target.name] = e.target.value;
             setInputData(newInputData);
         }
+
+        let len = inputData.length
+        disableSubmitButton(len)
+        
+        
   }
 
   const handleFormSubmit = async (e) => {
@@ -44,12 +72,20 @@ function Donate(){
           user: JSON.parse(window.localStorage.getItem('userId'))
         }
         const response = await postDonorSubmissionData(dataObj)
-        alert('Medicine data submitted.')
+        alert('Thank you for your donation!')
+        setInputData([
+            { medicineName: '',weight:'',companyName:'', quantity: '' },
+      ])
   };
 
   return (
-        <div>
-            <form className="form-group border mx-5 pl-5 pb-3 pt-2" method="POST">
+        <div >
+            <br/>
+            <br/>
+            <h4 className = 'pl-5'>Donor Form</h4>
+            <br/>
+
+            <form className="form-group border mx-5 pl-5 pb-3 pt-2 bg-light" method="POST">
                 <div className="row">
                     <h5 className="col-lg-2 mb-3 text-center">Medicine Name</h5> 
                     <h5 className="col-lg-2 mb-3 text-center">Weight(mg)</h5>
@@ -77,12 +113,16 @@ function Donate(){
                         })}
                     </datalist>
                     <input type="number" min="0" name="quantity" placeholder="quantity" className="col-lg-2 form-control mr-2" onChange={event => handleChangeInput(index,event)} value={inputDatas.quantity||''} required/>
-                    <button disabled={inputData.length === 1} className="btn btn-danger col-lg-1" onClick={handleRemoveData}>Delete</button>
+                    {/* <button disabled={inputData.length === 1} className="btn btn-danger col-lg-1" onClick={handleRemoveData}>Delete</button> */}
+                    <button type = "button" disabled={inputData.length === 1} className="btn btn-danger col-lg-1" onClick={() => {handleRemoveData(index)}}>Delete</button>
                 </div>
                 ))}
                 <div className="row mx-auto pb-2 mt-3">
                     <button type="button" className="btn btn-primary col-lg-1 mr-2" onClick={handleAddData}>Add</button>
-                    <button className="btn btn-success col-lg-1 offset-md-4 " onClick={handleFormSubmit}>Submit</button>
+                    {/* <p>{inputData[0].medicineName}</p> */}
+                    {/* <button  disabled = {inputData[0].medicineName === '' && inputData[] }className="btn btn-success col-lg-1 offset-md-4 " onClick={handleFormSubmit}>Submit</button> */}
+                    {/* <button className="btn btn-success col-lg-1 offset-md-4 " onClick={handleFormSubmit}>Submit</button> */}
+                    <button disabled = {isDisabled} className="btn btn-success col-md-1  " onClick={handleFormSubmit}>Submit</button>
                 </div>
 
             </form>

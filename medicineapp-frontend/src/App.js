@@ -9,14 +9,18 @@ import Home from './pages/Home'
 import Header from './components/Header'
 import Collector from './pages/Collect'
 import Donate from './pages/Donate'
+import AdminLogin from './pages/admin_login'
+import AdminPage from './pages/admin_page'
+import DetailsPage from './pages/details_page'
 
 const App = () => {
   const [user, setUser] = useState('')
+  const [admin, setAdmin ] = useState('')
 
   return (
     <div>
       <Router>
-        <Header user={user} setUser={setUser} />
+        <Header user={user} setUser={setUser} admin = {admin} setAdmin = {setAdmin} />
         <Switch>
           <Route path='/testimonials'>
             <Testimonials />
@@ -40,7 +44,13 @@ const App = () => {
             <Profile user={user} setUser={setUser} />
           </Route>
           <Route path = '/login-as-admin'>
-            
+            <AdminLogin />  
+          </Route>
+          <Route path = '/admin-page/:id'>
+            <AdminPage admin = {admin} setAdmin ={setAdmin}/>
+          </Route>
+          <Route path = '/requestDetails/:adminid/:requestid/:userid'>
+            <DetailsPage/>
           </Route>
           <Route path='/'>
             <Home />
