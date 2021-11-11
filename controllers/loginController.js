@@ -2,6 +2,7 @@ const User = require('../models/User')
 const Admin = require('../models/Admin')
 const Collection = require('../models/Collector')
 const bcrypt = require('bcrypt')
+const mongoose = require('mongoose')
 
 exports.postUser = async function (req, res) {
     const username = req.body.username
@@ -26,6 +27,11 @@ exports.postUser = async function (req, res) {
     await user.save(function(err, result) {
         if(err) {
             console.error(err)
+            if(err.code === 11000) {
+                res.json({
+                    err: 'Username not unique'
+                })
+            }
         } else {
             res.send(result)
         }
