@@ -76,6 +76,7 @@ function Donate(){
         setInputData([
             { medicineName: '',weight:'',companyName:'', quantity: '' },
       ])
+      setIsDisabled(true)
   };
 
   return (
