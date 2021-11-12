@@ -49,7 +49,7 @@ const SignUp = () => {
             }
             if(valid) {
               for (let i = 0; i < userObj.name.length; i++) {
-                if((userObj.name.charCodeAt(i) >= 65 && userObj.name.charCodeAt(i) <= 90) || (userObj.name.charCodeAt(i) >= 97 && userObj.name.charCodeAt(i) <= 122)) {
+                if((userObj.name.charCodeAt(i) >= 65 && userObj.name.charCodeAt(i) <= 90) || (userObj.name.charCodeAt(i) >= 97 && userObj.name.charCodeAt(i) <= 122) || (userObj.name.charCodeAt(i) == 32)) {
                     continue
                 }
                 valid = false

@@ -23,7 +23,7 @@ function Header(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
-                    <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+                    <Link className="nav-link" to="/" style={{color:"#007bff"}}>Home <span className="sr-only">(current)</span></Link>
                 </li>
                 {/* <li className="nav-item">
                     <Link className="nav-link" to="/about">About</Link>
@@ -34,37 +34,37 @@ function Header(props) {
                 {
                     !props.user && !props.admin &&
                     <li className="nav-item">
-                    <Link className="nav-link" to="/login">Login</Link>
+                    <Link className="nav-link" to="/login" style={{color:"#007bff"}}>Login</Link>
                 </li>
                 }
                 {
                     !props.user && !props.admin &&
                     <li className="nav-item">
-                    <Link className="nav-link" to="/signup">Signup</Link>
+                    <Link className="nav-link" to="/signup" style={{color:"#007bff"}}>Signup</Link>
                 </li>
                 }
                 {
                     props.user && 
                     <li className="nav-item">
-                        <Link className="nav-link" to="/donate">Donate</Link>
+                        <Link className="nav-link" to="/donate" style={{color:"#007bff"}}>Donate</Link>
                     </li>
                 }
                 {
                     props.user && 
                     <li className="nav-item">
-                        <Link className="nav-link" to="/collect">Collect</Link>
+                        <Link className="nav-link" to="/collect" style={{color:"#007bff"}}>Collect</Link>
                     </li>
                 }
                     {
                         props.user && 
                     <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Profile</Link>
+                        <Link className="nav-link" to="/profile" style={{color:"#007bff"}}>Profile</Link>
                     </li>
                     }
                 {
                     props.user && 
                     <li className="nav-item" onClick={handleLogOut}>
-                        <Link className="nav-link" to='/'>Logout</Link>
+                        <Link className="nav-link" to='/' style={{color:"#dc3545"}}>Logout</Link>
                     </li>
                 }
                 {/* {
@@ -77,13 +77,13 @@ function Header(props) {
                     props.admin &&
                     <li className = "nav-item">
                         
-                        <Link className = 'nav-link' to = {`/admin-page/${window.localStorage.adminID}`}>Adminpage</Link>    
+                        <Link className = 'nav-link' to = {`/admin-page/${window.localStorage.adminID}`} style={{color:"#007bff"}}>Adminpage</Link>    
                     </li>
                 }
                 {
                     props.admin &&
                     <li className = 'nav-item' onClick = {handleAdminLogOut}>
-                        <Link className = 'nav-link' to = '/'>Admin Logout</Link>
+                        <Link className = 'nav-link' to = '/' style={{color:"#dc3545"}}>Admin Logout</Link>
                     </li>
                 }
             </ul>

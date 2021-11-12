@@ -66,6 +66,7 @@ function CollectorForm(){
         setInputData([
             { medicineName: '', quantity: '',weight:'',companyName:'' },
           ])
+          setIsDisabled(true)
       };
 
     return (
